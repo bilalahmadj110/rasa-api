@@ -1,0 +1,153 @@
+version: "3.1"
+nlu:
+  - intent: goodbye
+    examples: |
+      - good afternoon
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+  - intent: hottub_issues
+    examples: |
+      - my hot tub is cold
+      - my hot tub is not heating
+      - the jacuzzi isn't working
+      - my hot tub is broken
+  - intent: hottub_leaking
+    examples: |+
+      - leaking
+      - dripping
+      - leaking out
+      - its running
+      - flowing
+           
+  - intent: hottub_get_cold
+    examples: |
+      - it's cold
+      - My whirlpool is icy
+      -  My bathtub is frosty
+      - My jacuzzi is frigid
+      - My whirlpool is icy
+  - intent: hottub_topside_power
+    examples: |
+      - power
+      - topside has power
+      - power on the topside
+      - power on top
+      - on topside there is power
+      - topside has power
+      - Jacuzzi exterior has energy
+      - Spa exterior has strength
+      - Bathtub exterior has potency
+  - intent: hottub_top_no_power
+    examples: |
+      - no_power on the topside
+      - topside has no_power
+      - Jacuzzi exterior has no energy
+      - Spa exterior has no strength
+      - Bathtub exterior has no potency
+      - no_power
+      - no power on the topside
+      - there is no_power
+  - intent: hottub_dirty
+    examples: |
+      - dirty
+      - hottub is dirty
+      - Jacuzzi is unclean
+      - Spa is contaminated
+      - Bathtub is unclean
+      - not cleared
+  - intent: hello_world
+    examples: |
+      - world
+      - programming
+      - first program
+  - intent: chat_gpt
+    examples: |-
+      - who is the president of pakistan?
+      - please tell the weather about the california?
+      - what is the current temperature in Delhi?
+      - which thing make the book interesting?
+  - intent: halchal
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello
+      - there
+      - good
+      - morning
+      - good
+      - evening
+      - moin
+      - hey
+      - there
+      - let's
+      - go
+      - hey
+      - dude
+      - goodmorning
+      - goodevening
+      - good
+      - afternoon
