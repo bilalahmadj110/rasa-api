@@ -2,6 +2,7 @@ import ruamel.yaml
 yaml = ruamel.yaml.YAML()
 import yaml as yamlreader
 from flask import Flask, jsonify, request, abort
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 
@@ -13,16 +14,11 @@ DOMAIN_FILE_PATH = r'/home/user/Downloads/AIBot/domain.yml'
 def write_nlu(name, examples):
     with open(FILE_PATH_NLU) as fp:
         data = yaml.load(fp)
-        print("****----", data)
     # if intent already exists
     for intent in data['nlu']:
-        print (intent, type(intent))
         if intent['intent'] == name:
-            print (intent)
             new_intent = {'intent': name, 'examples': examples}
             intent.update(new_intent)
-            print ("*"*100)
-            print (intent)
             yaml.indent(mapping=2, sequence=4, offset=2)
             with open(FILE_PATH_NLU, 'w') as f:
                 yaml.dump(data, f)
@@ -32,7 +28,6 @@ def write_nlu(name, examples):
         # CommentedMap
         new_intent = {'intent': name, 'examples': examples}
         data['nlu'].append(new_intent)
-        print (data)
         yaml.indent(mapping=2, sequence=4, offset=2)
         with open(FILE_PATH_NLU, 'w') as f:
             yaml.dump(data, f)
@@ -41,7 +36,6 @@ def get_intent_list():
     with open(FILE_PATH_NLU, 'r') as stream:
         try:
             nlu = yamlreader.load(stream)
-            print (nlu)
             intents = [i['intent'].split('\n') for i in nlu['nlu']]
             # flatten list
             intents = [item.strip('- ') for sublist in intents for item in sublist if item]
@@ -95,7 +89,6 @@ def get_stories():
     with open(FILE_PATH_STORIES, 'r') as stream:
         try:
             stories = yamlreader.load(stream)
-            print (stories)
             stories = [story['story'] for story in stories['stories']]
         except Exception as e:
             abort(500, str(e))
@@ -137,23 +130,17 @@ def add_story():
 
     with open(FILE_PATH_STORIES, 'r') as stream:
         try:
-            stories = yaml.load(stream)
+            stories = yamlreader.safe_load(stream)
             stories['stories'].append(story)
-            # save stories
-            yaml.dump(stories, stream, default_flow_style=False)
+            # yaml.dump(stories, stream, default_flow_style=False, indent=4)
         except Exception as e:
             # throw server error, 500
             print (e)
             abort(500, str(e))
-
+    
     with open(FILE_PATH_STORIES, 'w') as stream:
-        try:
-            print(stories)
-            yaml.dump(stories, stream, default_flow_style=False, indent=4)
-        except Exception as e:
-            # throw server error, 500
-            print (e)
-            abort(500, str(e))
+        yaml.indent(mapping=2, sequence=4, offset=2)
+        yaml.dump(stories, stream)
 
     return jsonify(story), 201
 
