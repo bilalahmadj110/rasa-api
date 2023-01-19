@@ -1,0 +1,54 @@
+version: '3.1'
+stories:
+  - story: happy path
+    steps:
+      - intent: mood_2
+      - action: utter_mood
+  - story: sad path 1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
+  - story: sad path 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_goodbye
+  - story: hottub path
+    steps:
+      - intent: hottub_issues
+      - action: utter_hottub
+      - intent: hottub_leaking
+      - action: utter_leaking
+  - story: hottub cold path
+    steps:
+      - intent: hottub_issues
+      - action: utter_hottub
+      - intent: hottub_get_cold
+      - action: utter_get_cold
+      - intent: hottub_topside_power
+      - action: utter_topside_power
+      - intent: hottub_top_no_power
+      - action: utter_hottub_top_no_power
+  - story: hottub dirty path
+    steps:
+      - intent: hottub_issues
+      - action: utter_hottub
+      - intent: hottub_dirty
+      - action: utter_dirty
+  - story: hello world path
+    steps:
+      - intent: hello_world
+      - action: action_hello_world
+  - story: hottub cold path
+    steps:
+      - intent: a
+      - action: b
